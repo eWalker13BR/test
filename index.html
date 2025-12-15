@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bispos News</title>
+    <meta name="description" content="Uma votação com os Melhores do Bispos News">
+    <link rel="icon" type="image/png" href="bnlogo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar_principal">
+            <div class="nav-wrapper">
+
+                <img src="bnlogo.png" class="nav-logo" alt="Logo">
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="Categorias.html">Categorias</a></li>
+                    <li><a href="Votar.html">Votar</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <h1 class="tempo" id="contador-regressivo">CARREGANDO...</h1>
+
+            <div class="logo-container">
+                <img src="Logo.png" alt="Logo Melhores do Bispos News">
+            </div>
+
+            <p class="subtitulo">
+                O maior evento de votação do Bispos News está chegando!
+            </p>
+
+            <a href="Votar.html" class="button button-big">
+                <span>VOTAR AGORA</span>
+            </a>
+        </section>
+
+        <section class="section-info">
+            <p class="teste">
+                Vote no Melhor dos Melhores do Bispos News
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; Melhores do Bispos News — Todos os Direitos Reservados</p>
+    </footer>
+
+    <script>
+        // Data e hora do evento: 20 de Dezembro de 2025, às 19:00:00
+        // MUDANÇA REALIZADA AQUI: A hora foi alterada para 19 (19:00).
+        const dataFinal = new Date(2025, 11, 20, 19, 0, 0).getTime();
+
+        const elementoContador = document.getElementById("contador-regressivo");
+
+        const contador = setInterval(function() {
+            
+            const agora = new Date().getTime();
+            const distancia = dataFinal - agora;
+            
+            // Constante para milissegundos em um dia
+            const msPorDia = 1000 * 60 * 60 * 24;
+            
+            // 1. Calcula dias inteiros
+            const dias = Math.floor(distancia / msPorDia);
+            
+            // 2. Calcula as horas que sobram após a subtração dos dias
+            const msRestanteEmHoras = distancia % msPorDia;
+            const horas = Math.floor(msRestanteEmHoras / (1000 * 60 * 60));
+            
+            if (distancia > 0) {
+                // Atualiza o texto com Dias e Horas
+                elementoContador.innerHTML = `FALTA ${dias} DIAS E ${horas} HORAS!`;
+            } else {
+                // Para o contador e exibe a mensagem final
+                clearInterval(contador);
+                elementoContador.innerHTML = "O EVENTO COMEÇOU!";
+                // Opcional: Adicione mais lógica aqui, como remover o botão "VOTAR AGORA"
+            }
+        }, 1000); // Atualiza a cada 1 segundo
+    </script>
+
+</body>
+</html>

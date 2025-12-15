@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Krona+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #102b5e;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    /* Adicionada transição suave ao body */
+    transition: background-color 0.5s ease;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+
+/* Animação para o título e logo: aparecer suavemente */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animação para o botão: deslizar de baixo e pulsar */
+@keyframes slideUpAndPulse {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animação de flutuação para o logo/tempo */
+@keyframes subtleFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* ---------------- NAVBAR ANIMADA ---------------- */
+
+header {
+    background-image: linear-gradient(90deg, #4facfe, #00f2fe);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    animation: headerShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes headerShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.navbar_principal {
+    padding: 0.8rem 1.5rem;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* LOGO DA NAVBAR */
+.nav-logo {
+    width: 4.5rem;
+    height: auto;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: "Krona One", sans-serif;
+    padding: 0.5rem 1rem;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Brilho ao passar o mouse */
+nav ul li a:hover {
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #7ad8ff;
+    transform: scale(1.07);
+}
+
+/* Linha animada */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0%;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 60%;
+}
+
+/* Pulso */
+nav ul li a:hover {
+    animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+/* ESTILO DO CONTADOR REGRESSIVO REAL (.tempo) */
+.tempo {
+    /* Estilo de destaque para o contador */
+    background-image: linear-gradient(rgb(255, 166, 0), rgb(255, 118, 6));
+    color: rgb(65, 44, 19); /* Cor escura para contrastar com o gradiente */
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Torna responsivo: 1.5rem no menor, 2.5rem no maior */
+    font-weight: 900;
+    padding: 0.75rem 1.5rem; /* Aumentei o padding */
+    margin-bottom: 2rem; /* Mais espaçamento abaixo do contador */
+    border-radius: 8px; /* Borda levemente mais arredondada */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto; /* Centraliza */
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    
+    /* Aplica animações de entrada e flutuação */
+    animation: subtleFloat 4s ease-in-out infinite alternate, fadeInScale 0.8s ease-out;
+}
+
+.logo-container img {
+    width: 40rem;
+    max-width: 90%;
+    display: block;
+    margin: 0 auto;
+    animation: fadeInScale 1s ease-out 0.2s forwards;
+    opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.subtitulo {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 300;
+    animation: fadeInScale 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+/* ---------------- BOTÃO ---------------- */
+
+.button {
+    background-color: #D3A43E;
+    width: fit-content;
+    margin: 2rem auto;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: rgb(65, 44, 19);
+    font-weight: 700;
+    transition: 0.25s ease;
+    /* Aplica animação de entrada e pulso no carregamento */
+    animation: slideUpAndPulse 1s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.button-big {
+    font-size: 1.5rem;
+    padding: 15px 35px;
+}
+
+.button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 195, 80, 0.7);
+    /* Efeito de texto com sombra para destacar */
+    text-shadow: 0 0 5px rgba(65, 44, 19, 0.5); 
+}
+
+/* ---------------- INFORME ---------------- */
+
+.section-info {
+    margin-top: 1rem;
+}
+
+.teste {
+    background-image: linear-gradient(#0a0b47, #0f1057);
+    width: 100%;
+    padding: 1rem;
+    font-family: "Krona One", sans-serif;
+    text-align: center;
+    
+    /* Adiciona um brilho sutil à borda animada */
+    box-shadow: 0 0 10px rgba(26, 183, 255, 0.5); 
+
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, rgb(26, 183, 255), purple) 1;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    opacity: 0.7;
+    /* Entrada suave do rodapé */
+    animation: fadeInScale 1s ease-out 1s forwards; 
+}
+
+
+/* ========================================================================= */
+/* 📱 CORREÇÕES PARA RESPONSIVIDADE EM TELAS PEQUENAS (MOBILE) */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+    /* ---------------- NAVBAR ---------------- */
+    header {
+        padding: 0.5rem 0; 
+    }
+
+    .navbar_principal {
+        /* Ajusta para centralizar e compactar */
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-wrapper {
+        gap: 15px; /* Reduz o espaço */
+    }
+
+    .nav-logo {
+        width: 3.5rem; /* Diminui o tamanho do logo */
+    }
+    
+    /* Ajustes na lista de navegação para mobile */
+    nav ul {
+        /* Garante que o menu volte a aparecer */
+        display: flex; 
+        /* Alinha os itens para não quebrar a linha */
+        flex-wrap: nowrap; 
+        /* Reduz o espaço entre os itens */
+        gap: 15px; 
+    }
+
+    nav ul li a {
+        /* Diminui a fonte e o padding para caber na tela */
+        font-size: 0.65rem; 
+        padding: 0.3rem 0.5rem;
+    }
+    
+    /* Remove a linha animada ao passar o mouse para economizar espaço e evitar bugs de layout no toque */
+    nav ul li a::after {
+        display: none; 
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+        padding: 2rem 0.5rem;
+    }
+
+    /* Contador Regressivo (.tempo) */
+    .tempo {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        padding: 0.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo-container img {
+        width: 100%; 
+        max-width: 30rem;
+    }
+
+    .subtitulo {
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+
+    /* ---------------- BOTÃO ---------------- */
+
+    .button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .button-big {
+        font-size: 1.2rem;
+        padding: 12px 25px; 
+    }
+
+    /* ---------------- INFORME ---------------- */
+
+    .teste {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    footer {
+        margin-top: 2rem;
+        font-size: 0.75rem;
+    }
+}
