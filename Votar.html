@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stryle_votar.css">
+    <link rel="icon" type="image/png" href="bnlogo.png">
+    <title>Votação</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar_principal">
+            <div class="nav-wrapper">
+
+                <img src="bnlogo.png" class="nav-logo" alt="Logo">
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="Categorias.html" class="active">Categorias</a></li>
+                    <li><a href="Votar.html">Votar</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="box_desastrado">
+        <h1 class="desastrado">DESASTRADO</h1>
+        <p>Eles não fazem por mal, mas misericórdia</p>
+
+        <div class="cards">
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Ramires"> <div class="card">
+                    <img src="ramires.png" alt="Ramires">
+                    <button>VOTAR</button>
+                </div>
+                <span class="nome">Ramires</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Elias"> <div class="card">
+                    <img src="elias.png" alt="Elias">
+                    <button>VOTAR</button>
+                </div>
+                <span class="nome">Elias</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Arthur"> <div class="card">
+                    <button>VOTAR</button>
+                    <img src="Arthur.png" alt="Arthur">
+                </div>
+                <span class="nome">Arthur</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Mariana"> <div class="card">
+                    <img src="Mariana.png" alt="Mariana">
+                    <button>VOTAR</button>
+                </div>
+                <span class="nome">Mariana</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Sabrina"> <div class="card">
+                    <button>VOTAR</button>
+                    <img src="Sabrina.png" alt="Sabrina">
+                </div>
+                <span class="nome">Sabrina</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Nicolly"> <div class="card">
+                    <img src="Nicolly.png" alt="Nicolly">
+                    <button>VOTAR</button>
+                </div>
+                <span class="nome">Nicolly</span>
+            </label>
+
+            <label class="card-wrapper">
+                <input type="checkbox" class="voto-input" data-voto="Lucas"> <div class="card">
+                    <img src="Lucas.png" alt="Lucas">
+                    <button>VOTAR</button>
+                </div>
+                <span class="nome">Lucas</span>
+            </label>
+
+        </div>
+        
+        <div id="submit-area">
+            <a id="btn-finalizar-voto" href="https://docs.google.com/forms/d/e/1FAIpQLSeh_Cu6bvIBxFcbJi7LMrJHwJTlf8Km43AEbJyOq9F6z8eCbQ/viewform?usp=dialog" target="_blank" style="display: none;">
+                FINALIZAR VOTO
+            </a>
+        </div>
+        
+    </div>
+
+    <script>
+        const btnFinalizar = document.getElementById('btn-finalizar-voto');
+
+        document.querySelectorAll(".card-wrapper").forEach(wrapper => {
+            wrapper.addEventListener("click", function (e) {
+
+                // Previne o comportamento padrão do botão se ele for clicado
+                if (e.target.tagName === "BUTTON") e.preventDefault();
+
+                const input = this.querySelector(".voto-input");
+
+                // --- Lógica de Seleção ---
+
+                // Se o card clicado já estava marcado (quero desmarcar)
+                if (input.checked) {
+                    input.checked = false;
+                } else {
+                    // Desmarca todos os outros inputs antes de marcar o novo
+                    document.querySelectorAll(".voto-input").forEach(i => i.checked = false);
+                    input.checked = true;
+                }
+
+                // --- Lógica do Botão Finalizar ---
+                const isAnyChecked = Array.from(document.querySelectorAll(".voto-input")).some(i => i.checked);
+                
+                if (isAnyChecked) {
+                    btnFinalizar.style.display = 'inline-block'; // Exibe o botão
+                } else {
+                    btnFinalizar.style.display = 'none'; // Oculta o botão
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

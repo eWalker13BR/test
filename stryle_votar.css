@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f597a;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* ---------------- NAVBAR ANIMADA ---------------- */
+
+header {
+    background-image: linear-gradient(90deg, #4facfe, #00f2fe);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    animation: headerShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes headerShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.navbar_principal {
+    padding: 0.8rem 1.5rem;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* LOGO DA NAVBAR */
+.nav-logo {
+    width: 4.5rem;
+    height: auto;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: "Krona One", sans-serif;
+    padding: 0.5rem 1rem;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Brilho ao passar o mouse */
+nav ul li a:hover {
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #7ad8ff;
+    transform: scale(1.07);
+}
+
+/* Linha animada */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0%;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 60%;
+}
+
+/* Pulso */
+nav ul li a:hover {
+    animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+
+h1 {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+    font-family: "Krona One", sans-serif;
+    text-align: center;
+}
+
+/* TÍTULO */
+.box_desastrado {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.desastrado {
+    font-family: "Monoton", sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    letter-spacing: 5px;
+    padding-top: 2rem;
+}
+
+/* SUBTÍTULO */
+.box_desastrado p {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+/* CARDS */
+.cards {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-wrapper {
+    text-align: center;
+    width: 150px;
+    margin-bottom: 40px;
+    position: relative;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.voto-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card {
+    width: 150px;
+    height: 260px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #00c2ff);
+    border-radius: 4px;
+    position: relative;
+    padding-top: 20px;
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.card img {
+    width: 200px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card button {
+    margin-top: 210px;
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nome {
+    margin-top: 10px;
+    display: block;
+    font-size: 17px;
+}
+
+.card-wrapper:hover .card {
+    transform: scale(1.10);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), #00c2ff);
+    box-shadow: 0 0 18px 6px rgba(0, 255, 255, 0.7);
+}
+
+.voto-input:checked + .card {
+    transform: scale(1.15);
+    background: linear-gradient(to bottom, #ffffff50, #00e0ff);
+    box-shadow: 0 0 28px 10px rgba(0, 255, 255, 0.9);
+    border: 2px solid #b8ffff;
+}
+
+/* ---------------- BOTÃO FINALIZAR VOTO ---------------- */
+
+.submit-area {
+    margin-top: 60px; /* Espaçamento entre os cards e o botão */
+    text-align: center; /* Centraliza o botão */
+}
+
+#btn-finalizar-voto {
+    background: linear-gradient(90deg, #4facfe, #00f2fe); /* Fundo com gradiente igual ao header */
+    border: none;
+    border-radius: 50px; /* Borda arredondada */
+    color: white;
+    font-family: "Krona One", sans-serif;
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4); /* Sombra suave */
+    transition: all 0.3s ease; /* Transição para efeitos hover */
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+#btn-finalizar-voto:hover {
+    transform: translateY(-5px) scale(1.05); /* Efeito de elevação e leve aumento no hover */
+    box-shadow: 0 10px 25px rgba(0, 242, 254, 0.6); /* Sombra mais intensa no hover */
+    background-position: right center; /* Animação do gradiente */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Brilho no texto */
+}
+
+#btn-finalizar-voto:active {
+    transform: translateY(0); /* Retorna à posição original ao clicar */
+    box-shadow: 0 3px 10px rgba(0, 242, 254, 0.3); /* Sombra menor ao clicar */
+}
+
+/* Opcional: Estilo para quando o botão estiver desabilitado (após o voto) */
+#btn-finalizar-voto:disabled {
+    background: #cccccc; /* Cor cinza */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.7;
+}
+
+
+/* ========================================================================= */
+/* 📱 CORREÇÕES PARA RESPONSIVIDADE EM TELAS PEQUENAS (MOBILE) */
+/* Essas regras SÓ serão aplicadas em telas de 768px ou menos. */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+    /* ---------------- NAVBAR ---------------- */
+    header {
+        padding: 0.5rem 0; 
+    }
+
+    .navbar_principal {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-wrapper {
+        gap: 15px; 
+    }
+
+    .nav-logo {
+        width: 3.5rem; 
+    }
+    
+    /* Ajustes na lista de navegação para mobile (Links compactos) */
+    nav ul {
+        display: flex; 
+        flex-wrap: nowrap; /* Evita que os links quebrem a linha */
+        gap: 15px; 
+        overflow-x: auto; /* Permite scroll horizontal se os links não couberem */
+        padding-bottom: 5px; /* Adiciona um pequeno padding para o scroll (opcional) */
+    }
+
+    nav ul li a {
+        font-size: 0.65rem; 
+        padding: 0.3rem 0.5rem;
+        white-space: nowrap; /* Garante que o texto do link não quebre */
+    }
+    
+    nav ul li a::after {
+        display: none; 
+    }
+    
+    /* ---------------- TÍTULOS ---------------- */
+    h1 {
+        font-size: 1.5rem; /* Reduz o tamanho do h1 genérico */
+    }
+    
+    .box_desastrado {
+        margin: 20px auto; /* Reduz o margin superior/inferior */
+        width: 95%; /* Usa um pouco mais da largura da tela */
+    }
+
+    .desastrado {
+        font-size: clamp(30px, 10vw, 40px); /* Fonte responsiva, menor que a de desktop */
+        letter-spacing: 2px;
+        padding-top: 1rem;
+    }
+
+    .box_desastrado p {
+        font-size: 16px; /* Reduz o tamanho do subtítulo */
+    }
+
+    /* ---------------- CARDS ---------------- */
+    .cards {
+        margin-top: 30px;
+        /* Centraliza os cards quando há poucos itens ou usa wrap */
+        justify-content: center; 
+        gap: 20px 10px; /* Ajusta o gap entre colunas e linhas */
+    }
+
+    .card-wrapper {
+        /* Define a largura para que caibam 2 por linha em telas padrão de celular (~150px x 2 = 300px + gap) */
+        width: 140px; 
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: 140px; /* Ajusta a largura do card */
+        height: 240px; /* Ajusta a altura do card */
+    }
+
+    .card img {
+        width: 180px; /* Reduz o tamanho da imagem flutuante */
+        top: -20px;
+    }
+    
+    .card button {
+        margin-top: 195px; /* Ajusta a posição do botão para a nova altura do card */
+        font-size: 14px;
+    }
+    
+    .nome {
+        font-size: 15px;
+    }
+    
+    /* Efeitos de hover/checked simplificados no mobile */
+    .card-wrapper:hover .card, 
+    .voto-input:checked + .card {
+        transform: scale(1.05); /* Reduz o efeito de escala para evitar transbordamento */
+        box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.7);
+    }
+    
+    /* ---------------- BOTÃO FINALIZAR VOTO ---------------- */
+    .submit-area {
+        margin-top: 30px;
+    }
+
+    #btn-finalizar-voto {
+        font-size: 1rem;
+        padding: 12px 30px;
+        letter-spacing: 0.5px;
+    }
+    
+    #btn-finalizar-voto:hover {
+        transform: none; /* Desativa a elevação no hover para simplificar a interação touch */
+        box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+    }
+}
