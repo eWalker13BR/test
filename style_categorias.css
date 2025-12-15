@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #102b5e;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* --------- NAVBAR (corrigida) --------- */
+
+nav {
+    background-image: linear-gradient(90deg, #4facfe, #00f2fe);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    backdrop-filter: blur(6px);
+    animation: headerShift 8s ease-in-out infinite alternate;
+    padding: 0.8rem 1.5rem;
+}
+
+@keyframes headerShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* LOGO */
+.nav-logo {
+    width: 4.5rem;
+    height: auto;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* LINKS */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: "Krona One", sans-serif;
+    padding: 0.5rem 1rem;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* brilho no hover */
+nav ul li a:hover {
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #7ad8ff;
+    transform: scale(1.07);
+    animation: pulse 0.6s ease;
+}
+
+/* linha animada */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0%;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 60%;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* -------- CATEGORIAS -------- */
+
+h1 {
+    margin-top: 1.5rem;
+    font-size: 2.5rem;
+    font-family: "Krona One", sans-serif;
+    text-align: center;
+}
+
+.categorias-container {
+    width: 90%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.categoria-lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.categoria-lista li {
+    background: #1b3f7a;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.25s ease;
+    cursor: default;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.categoria-lista li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, .65);
+}
+
+/* link para votar */
+.call-vote {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+.call-vote a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.call-vote a:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================================================= */
+/* 📱 CORREÇÕES PARA RESPONSIVIDADE EM TELAS PEQUENAS (MOBILE) */
+/* (Seguindo o Modelo Fornecido) */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+    /* ---------------- NAVBAR ---------------- */
+    
+    nav {
+        /* Adapta o padding para caber na mesma linha */
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-wrapper {
+        gap: 15px; /* Reduz o espaço */
+    }
+
+    .nav-logo {
+        width: 3.5rem; /* Diminui o tamanho do logo */
+    }
+    
+    /* Ajustes na lista de navegação para mobile */
+    nav ul {
+        display: flex; 
+        flex-wrap: nowrap; 
+        gap: 15px; 
+        overflow-x: auto; /* Permite scroll se for muito longo */
+    }
+
+    nav ul li a {
+        font-size: 0.65rem; 
+        padding: 0.3rem 0.5rem;
+        white-space: nowrap; /* Impede quebra de linha do texto do link */
+    }
+    
+    nav ul li a::after {
+        display: none; /* Remove a linha animada */
+    }
+    
+    /* ---------------- TÍTULOS E TEXTO ---------------- */
+    
+    h1 {
+        margin-top: 1rem;
+        font-size: 1.8rem;
+    }
+    
+    .categorias-container {
+        width: 95%; 
+        margin: 1.5rem auto;
+    }
+    
+    /* ---------------- CATEGORIAS (GRID) ---------------- */
+    
+    .categoria-lista {
+        margin-top: 1rem;
+        /* Adapta o grid para itens mais largos, garantindo boa visualização em uma coluna */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 0.75rem;
+    }
+
+    .categoria-lista li {
+        font-size: 1rem; 
+        padding: 0.8rem;
+    }
+
+    /* link para votar */
+    .call-vote {
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+    }
+}
