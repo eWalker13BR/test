@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Cor de fundo baseada na imagem de exemplo */
+    background-color: #2b567a; 
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* ---------------- NAVBAR (Estilo Padrão) ---------------- */
+
+header {
+    background-image: linear-gradient(90deg, #4facfe, #00f2fe);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    animation: headerShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes headerShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.navbar_principal {
+    padding: 0.8rem 1.5rem;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-logo {
+    width: 4.5rem;
+    height: auto;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px white);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: "Krona One", sans-serif;
+    padding: 0.5rem 1rem;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* .active para o link "Sobre" */
+nav ul li a.active {
+    font-weight: 700;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+/* ---------------- CONTEÚDO 'SOBRE' ---------------- */
+
+.sobre-main {
+    padding: 3rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-sobre {
+    font-family: "Krona One", sans-serif;
+    font-size: 2.8rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.conteudo-wrapper {
+    display: flex;
+    gap: 5%;
+    align-items: flex-start; /* Alinha o topo das caixas */
+}
+
+/* --- SEÇÃO ANFITRIÃO (ESQUERDA) --- */
+
+.anfitriao-box {
+    width: 45%;
+    flex-shrink: 0; /* Impede que a caixa encolha */
+    text-align: center;
+}
+
+.anfitriao-foto-wrapper {
+    margin-bottom: 20px;
+    overflow: hidden; 
+}
+
+.anfitriao-foto {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.anfitriao-label {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.anfitriao-nome {
+    font-family: "Krona One", sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    line-height: 1.2;
+}
+
+/* --- SEÇÃO DESCRIÇÃO (DIREITA) --- */
+
+.descricao-box {
+    width: 50%;
+    padding: 2rem 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #f0f0f0; 
+    
+    /* Adiciona a barra branca sutil à esquerda da descrição */
+    border-left: 3px solid white;
+    padding-left: 25px;
+}
+
+/* ---------------- RESPONSIVIDADE MOBILE ---------------- */
+
+@media (max-width: 768px) {
+    /* ---------------- NAVBAR (Transferido do modelo funcional) ---------------- */
+    header {
+        padding: 0.5rem 0; 
+    }
+
+    .navbar_principal {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-wrapper {
+        gap: 15px; 
+    }
+
+    .nav-logo {
+        width: 3.5rem; 
+    }
+    
+    /* Ajustes na lista de navegação para mobile (Links compactos) */
+    nav ul {
+        display: flex; 
+        flex-wrap: nowrap; 
+        gap: 15px; 
+        overflow-x: auto; 
+        padding-bottom: 5px; 
+    }
+
+    nav ul li a {
+        font-size: 0.65rem; 
+        padding: 0.3rem 0.5rem;
+        white-space: nowrap; 
+    }
+    
+    nav ul li a::after {
+        display: none; 
+    }
+    
+    /* ---------------- CONTEÚDO 'SOBRE' (Ajustes de layout) ---------------- */
+    
+    .titulo-sobre {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .conteudo-wrapper {
+        /* Muda para empilhamento vertical no mobile */
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .anfitriao-box,
+    .descricao-box {
+        /* Ocupa a maior parte da largura da tela */
+        width: 90%; 
+        border-left: none; /* Remove a barra vertical no mobile */
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .anfitriao-foto-wrapper {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .anfitriao-nome {
+        font-size: 1.5rem;
+    }
+
+    .descricao-box {
+        /* Adiciona a barra superior para separar o texto da foto */
+        border-top: 2px solid white; 
+        padding-top: 1.5rem;
+        font-size: 1.1rem;
+        text-align: left; /* Alinha o texto à esquerda para melhor leitura */
+    }
+}
